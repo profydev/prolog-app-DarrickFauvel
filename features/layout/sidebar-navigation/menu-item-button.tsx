@@ -18,11 +18,24 @@ export function MenuItemButton({
   iconSrc,
   isCollapsed,
 }: MenuItemProps) {
+  const joinedClassNamesOfIconIsCollapsed = classNames(
+    styles.icon,
+    styles.isCollapsed,
+  );
+  const resultingCollapseIconOfIsCollapsedCheck =
+    text === "Collapse" && isCollapsed
+      ? joinedClassNamesOfIconIsCollapsed
+      : styles.icon;
+
   return (
     <li className={classNames(styles.listItem, className)}>
       <Button className={styles.anchor} onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.icon} src={iconSrc} alt={`${text} icon`} />{" "}
+        <img
+          className={resultingCollapseIconOfIsCollapsedCheck}
+          src={iconSrc}
+          alt={`${text} icon`}
+        />{" "}
         {!isCollapsed && text}{" "}
       </Button>
     </li>
