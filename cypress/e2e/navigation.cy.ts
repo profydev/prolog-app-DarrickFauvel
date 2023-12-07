@@ -42,6 +42,12 @@ describe("Sidebar Navigation", () => {
       // check that text is not rendered
       cy.get("nav").contains("Issues").should("not.exist");
     });
+
+    it("opens the user's mail app", () => {
+      // check the mailto recipient and subject
+      cy.get('a[href*="support@prolog-app.com"]');
+      cy.get('a[href*="Support Request: "]');
+    });
   });
 
   context("mobile resolution", () => {
